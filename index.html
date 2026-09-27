@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Esposa</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Librerías JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+</head>
+<body>
+
+    <!-- REPRODUCTOR DE AUDIO (Oculto) -->
+    <audio id="bg-music" src="audio/musica.mp3" loop preload="auto"></audio>
+
+    <!-- Canvas 3D -->
+    <div id="canvas-container"></div>
+
+    <!-- PANTALLA DE INICIO / BIENVENIDA -->
+    <div id="welcome-screen">
+        <!-- VISTA 1: INGRESO DE CLAVE -->
+        <div id="step-1-card" class="card-glow-border">
+            <div class="card-inner-content">
+                <div class="card-subtitle">DE MÍ PARA TI</div>
+                <h1 class="card-title">MIA MI ESPOSA</h1>
+                <p class="card-text">
+                    Un detalle especial hecho con todo mi corazón para ti. Ingresa la fecha especial en que nuestras vidas cambiaron para siempre:
+                </p>
+
+                <!-- INPUTS DE DÍGITOS DIRECTOS -->
+                <div class="pin-picker-container">
+                    <input type="text" maxlength="1" class="pin-input" data-index="0" inputmode="numeric" pattern="[0-9]*" autofocus>
+                    <input type="text" maxlength="1" class="pin-input" data-index="1" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="pin-input" data-index="2" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="pin-input" data-index="3" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="pin-input" data-index="4" inputmode="numeric" pattern="[0-9]*">
+                    <input type="text" maxlength="1" class="pin-input" data-index="5" inputmode="numeric" pattern="[0-9]*">
+                </div>
+
+                <div id="error-msg" class="error-text hidden">Clave incorrecta, intenta de nuevo</div>
+
+                <button id="start-btn">INGRESAR ✨</button>
+            </div>
+        </div>
+
+        <!-- VISTA 2: SEGUNDA TARJETA DE CONFIRMACIÓN -->
+        <div id="step-2-card" class="card-glow-border hidden">
+            <div class="card-inner-content">
+                <div class="heart-icon">❤️</div>
+                <div class="card-subtitle">¡CONTRASEÑA CORRECTA!</div>
+                <h1 class="card-title">¿Tú eres mi hermosa esposa, verdad?</h1>
+                <p class="card-text">
+                    Sabía que eras tú. Este universo de recuerdos marca mis bellos momentos a tu lado, está hecho con todo mi amor especialmente para ti.
+                </p>
+                <button id="continue-btn">CONTINUAR AL UNIVERSO 💖</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE MEMORIAS / FOTOS -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="flower-icon">🌸</div>
+            <img id="modal-img" src="" alt="Recuerdo">
+            <h2 id="modal-title"></h2>
+            <p id="modal-text"></p>
+            <button id="close-btn" class="modal-close-btn">CERRAR ✦</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
